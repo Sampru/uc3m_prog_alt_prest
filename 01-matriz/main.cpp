@@ -5,10 +5,13 @@
 
 void rellenarMatriz(Matriz &m);
 
-const int DIMENSION = 1000;
+const int DIMENSION = 100;
+const int LEAF_SIZE= 750;
 
 
 int main() {
+    using namespace std;
+    auto start = chrono::high_resolution_clock::now();
     Matriz A{DIMENSION, DIMENSION},
            B{DIMENSION, DIMENSION},
            C{DIMENSION, DIMENSION},
@@ -18,19 +21,25 @@ int main() {
     rellenarMatriz(B);
     rellenarMatriz(C);
 
-    auto start = std::chrono::high_resolution_clock::now();
+    auto calc_start = chrono::high_resolution_clock::now();
     D = A * B + C;
-    auto end = std::chrono::high_resolution_clock::now();
+    auto calc_end = chrono::high_resolution_clock::now();
 
-    std::cout << A << std::endl;
-    std::cout << "*" << std::endl;
-    std::cout << B << std::endl;
-    std::cout << "+" << std::endl;
-    std::cout << C << std::endl;
-    std::cout << "=" << std::endl;
-    std::cout << D << std::endl;
-    std::chrono::duration<double> diff = end-start;
-    std::cout << "Resolution time: " << diff.count() << "s" << std::endl;
+    /*
+     * cout << A << endl;
+     * cout << "*" << endl;
+     * cout << B << endl;
+     * cout << "+" << endl;
+     * cout << C << endl;
+     * cout << "=" << endl;
+     * cout << D << endl;
+     */
+    chrono::duration<double> calc_diff = calc_end - calc_start;
+    cout << "Calculation time: " << calc_diff.count() << "s" << endl;
+
+    chrono::duration<double> diff = chrono::high_resolution_clock::now() - start;
+    cout << "Total time: " << diff.count() << "s" << endl;
+
     return 0;
 }
 
