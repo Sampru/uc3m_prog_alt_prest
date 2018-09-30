@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/lib/matriz.h
+iostream
+-
+
+/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/main.cpp
+iostream
+-
+random
+-
+chrono
+-
+lib/matriz.h
+/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/lib/matriz.h
+
+/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/matriz.cpp
+lib/matriz.h
+/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/lib/matriz.h
+
