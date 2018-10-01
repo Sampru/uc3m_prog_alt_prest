@@ -3,7 +3,7 @@
 #include <chrono>
 #include "lib/matriz.h"
 
-void rellenarMatriz(Matriz &m);
+void rellenarMatriz(matriz &m);
 
 const int DIMENSION = 100;
 const int LEAF_SIZE= 750;
@@ -12,7 +12,7 @@ const int LEAF_SIZE= 750;
 int main() {
     using namespace std;
     auto start = chrono::high_resolution_clock::now();
-    Matriz A{DIMENSION, DIMENSION},
+    matriz A{DIMENSION, DIMENSION},
            B{DIMENSION, DIMENSION},
            C{DIMENSION, DIMENSION},
            D{};
@@ -43,7 +43,7 @@ int main() {
     return 0;
 }
 
-void rellenarMatriz(Matriz &m) {
+void rellenarMatriz(matriz &m) {
     using namespace std;
     random_device rd;
     mt19937 gen(rd());

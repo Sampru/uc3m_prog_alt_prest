@@ -7,15 +7,14 @@
 
 #include <iostream>
 
-class Matriz {
+class matriz {
 public:
     /* Constructores */
-    Matriz ();
-    Matriz (int fil_, int col_);
-
-
-    /* Copia y movimiento */
-    Matriz& operator =(const Matriz&);
+    matriz ();
+    matriz (int fil_, int col_);
+    matriz (matriz&& m) noexcept;
+    matriz& operator =(const matriz&);
+    ~matriz();
 
     /* Acceso a 01-matriz */
     double& operator ()(int fil_, int col_) const;
@@ -24,7 +23,7 @@ public:
     /* Getters */
     int filas () const;
     int columnas () const;
-    double* matriz () const;
+    double* matrix () const;
 
 private:
     /* Miembros */
@@ -36,9 +35,9 @@ private:
 
 
 /* Operadores */
-std::ostream & operator<<(std::ostream &os, Matriz &m);
-Matriz operator +(const Matriz &m1,const Matriz &m2);
-Matriz operator *(const Matriz &m1,const Matriz &m2);
+std::ostream & operator<<(std::ostream &os, matriz &m);
+matriz operator +(const matriz &m1,const matriz &m2);
+matriz operator *(const matriz &m1,const matriz &m2);
 
 
 #endif //MATRIZ_MATRIZ_H
