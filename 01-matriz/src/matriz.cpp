@@ -2,7 +2,7 @@
 // Created by sampru on 25/09/18.
 //
 
-#include "lib/matriz.h"
+#include "../lib/matriz.h"
 
 /* Constructores */
 matriz::matriz () : fil{0}, col{0}, mat{nullptr} {}
