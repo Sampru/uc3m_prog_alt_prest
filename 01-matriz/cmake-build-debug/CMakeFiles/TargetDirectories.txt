@@ -1,3 +1,0 @@
-/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles/edit_cache.dir
-/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles/matriz.dir

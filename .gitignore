@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Propios
+exe
+cmake-build-debug/
+CMakeList.txt
+.idea/
