@@ -5,16 +5,26 @@
 
 void rellenarMatriz(matriz &m);
 
-const int DIMENSION = 100;
+const int DIMENSION = 1000;
 const int LEAF_SIZE= 750;
 
 
-int main() {
+int main(int argc, char *argv[]) {
     using namespace std;
     auto start = chrono::high_resolution_clock::now();
-    matriz A{DIMENSION, DIMENSION},
-           B{DIMENSION, DIMENSION},
-           C{DIMENSION, DIMENSION},
+    int size = DIMENSION;
+    char trace = 'n';
+
+    if (argc > 1) {
+        size = stoi(argv[1]);
+    }
+    if (argc > 2) {
+        trace = argv[2][0];
+    }
+
+    matriz A{size, size},
+           B{size, size},
+           C{size, size},
            D{};
 
     rellenarMatriz(A);
@@ -25,15 +35,16 @@ int main() {
     D = A * B + C;
     auto calc_end = chrono::high_resolution_clock::now();
 
-    /*
-     * cout << A << endl;
-     * cout << "*" << endl;
-     * cout << B << endl;
-     * cout << "+" << endl;
-     * cout << C << endl;
-     * cout << "=" << endl;
-     * cout << D << endl;
-     */
+    if (trace == 'y') {
+        cout << A << endl;
+        cout << "*" << endl;
+        cout << B << endl;
+        cout << "+" << endl;
+        cout << C << endl;
+        cout << "=" << endl;
+        cout << D << endl;
+    }
+
     chrono::duration<double> calc_diff = calc_end - calc_start;
     cout << "Calculation time: " << calc_diff.count() << "s" << endl;
 

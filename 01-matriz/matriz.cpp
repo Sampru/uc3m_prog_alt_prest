@@ -48,14 +48,17 @@ matriz operator +(const matriz &m1,const matriz &m2) {
     return m3;
 }
 
-matriz operator *(const matriz &m1,const matriz &m2) {
-    matriz m3{m1.filas(), m1.columnas()};
-    for (int i = 0; i < (m1.filas() * m1.columnas()); i++) {
-        double sum{0.0};
-        for (int j = 0; j < m1.columnas(); j++) {
-            sum += m1(j + ((i / m1.columnas()) * m1.columnas())) * m2((j * m2.columnas()) + (i % m2.filas()));
+matriz operator *(const matriz &m1, const matriz &m2) {
+    matriz m3{m1.filas(), m2.columnas()};
+
+    for (int i = 0; i < m1.filas(); i++) {
+        for (int j = 0; j < m2.columnas(); j++) {
+            double sum = 0.0;
+            for (int k = 0; k < m3.filas(); k++) {
+                sum += m1(i, k) * m2(k, j);
+            }
+            m3(i,j) = sum;
         }
-        m3(i) = sum;
     }
     return m3;
 }
