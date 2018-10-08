@@ -51,6 +51,15 @@ int main(int argc, char *argv[]) {
     chrono::duration<double> diff = chrono::high_resolution_clock::now() - start;
     cout << "Total time: " << diff.count() << "s" << endl;
 
+    auto d_start = chrono::high_resolution_clock::now();
+    D.calcular_diagonal();
+    auto d_end = chrono::high_resolution_clock::now();
+    D.calcular_diagonal_loop();
+    auto loop_end = chrono::high_resolution_clock::now();
+    diff = d_end - d_start;
+    cout << "Recursive time: " << diff.count() << "s" << endl;
+    diff = loop_end - d_end;
+    cout << "Loop time: " << diff.count() << "s" << endl;
     return 0;
 }
 

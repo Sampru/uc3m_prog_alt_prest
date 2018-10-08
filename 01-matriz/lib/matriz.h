@@ -16,15 +16,21 @@ public:
     matriz& operator =(const matriz&);
     ~matriz();
 
-    /* Acceso a 01-matriz */
+    /* Acceso a matriz */
     double& operator ()(int fil_, int col_) const;
     double& operator ()(int idx) const;
+
+    /* Requisitos */
+    double calcular_diagonal();
+    double calcular_diagonal_loop();
 
     /* Datamembers */
     double *mat;
     int  fil {0};
     int  col {0};
 
+private:
+    double calcular_diagonal(int i);
 };
 
 
