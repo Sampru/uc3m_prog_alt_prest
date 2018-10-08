@@ -4,11 +4,14 @@
 
 #include "../lib/matriz.h"
 
-/* Constructores */
+/* Constructors */
 matriz::matriz () : fil{0}, col{0}, mat{nullptr} {}
-matriz::matriz (int fil_, int col_) : fil{fil_}, col{col_}, mat{new double[fil_ * col_] {}} {}
+matriz::matriz (int fil_, int col_) : fil{fil_}, col{col_}, mat{new double[fil_ * col_] {}} {
+    if (fil_ != col_) std::cerr << "*** Wrong dimensions for a square matrix :S ***" << std::endl
+                                << "***        Expect unexpected output         ***" << std::endl;
+}
 
-/* Operadores */
+/* Operators */
 double& matriz::operator ()(const int fil_, const int col_) const {
     return mat[fil_ * col + col_];
 }
@@ -33,26 +36,17 @@ matriz::~matriz() {
     delete []this->mat;
 }
 
- /* Requisitos */
-double matriz::calcular_diagonal() {
-    return this->calcular_diagonal(0);
-}
-
-double matriz::calcular_diagonal(int i) {
-    if (i + 1 != this->fil * this->col) return this->operator()(i) + this->calcular_diagonal(i += + 1 + this->col);
-    else return this->operator()(i);
-}
-
-double matriz::calcular_diagonal_loop() {
+ /* Requisites */
+double matriz::calculate_diagonal() {
     double ret = 0.0;
-    for (int i = 0; i < this->fil * this->col; i += this->col + 1)
-        ret += this->operator()(i);
+    for (int i = 0; i < this->fil ; i++)
+        ret += this->operator()(i, i);
     return ret;
 }
 
 
 
-/* Funciones */
+/* Overload */
 matriz operator +(const matriz &m1,const matriz &m2) {
     int max = m1.fil * m1.col;
     matriz m3{m1.fil, m1.col};

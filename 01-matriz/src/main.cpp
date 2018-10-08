@@ -3,7 +3,7 @@
 #include <chrono>
 #include "../lib/matriz.h"
 
-void rellenarMatriz(matriz &m);
+void fill_matriz(matriz &m);
 
 const int DIMENSION = 1000;
 const int LEAF_SIZE= 750;
@@ -27,13 +27,16 @@ int main(int argc, char *argv[]) {
            C{size, size},
            D{};
 
-    rellenarMatriz(A);
-    rellenarMatriz(B);
-    rellenarMatriz(C);
+    fill_matriz(A);
+    fill_matriz(B);
+    fill_matriz(C);
 
     auto calc_start = chrono::high_resolution_clock::now();
     D = A * B + C;
     auto calc_end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double> calc_diff = calc_end - calc_start;
+
 
     if (trace == 'y') {
         cout << A << endl;
@@ -45,25 +48,19 @@ int main(int argc, char *argv[]) {
         cout << D << endl;
     }
 
-    chrono::duration<double> calc_diff = calc_end - calc_start;
     cout << "Calculation time: " << calc_diff.count() << "s" << endl;
+
+    double diag = D.calculate_diagonal();
+
+    cout << "Diagonal: " << diag << endl;
 
     chrono::duration<double> diff = chrono::high_resolution_clock::now() - start;
     cout << "Total time: " << diff.count() << "s" << endl;
 
-    auto d_start = chrono::high_resolution_clock::now();
-    D.calcular_diagonal();
-    auto d_end = chrono::high_resolution_clock::now();
-    D.calcular_diagonal_loop();
-    auto loop_end = chrono::high_resolution_clock::now();
-    diff = d_end - d_start;
-    cout << "Recursive time: " << diff.count() << "s" << endl;
-    diff = loop_end - d_end;
-    cout << "Loop time: " << diff.count() << "s" << endl;
     return 0;
 }
 
-void rellenarMatriz(matriz &m) {
+void fill_matriz(matriz &m) {
     using namespace std;
     random_device rd;
     mt19937 gen(rd());

@@ -9,32 +9,28 @@
 
 class matriz {
 public:
-    /* Constructores */
+    /* Constructors */
     matriz ();
     matriz (int fil_, int col_);
     matriz (matriz&& m) noexcept;
     matriz& operator =(const matriz&);
     ~matriz();
 
-    /* Acceso a matriz */
+    /* Operators */
     double& operator ()(int fil_, int col_) const;
     double& operator ()(int idx) const;
 
-    /* Requisitos */
-    double calcular_diagonal();
-    double calcular_diagonal_loop();
+    /* Requisites */
+    double calculate_diagonal();
 
     /* Datamembers */
     double *mat;
     int  fil {0};
     int  col {0};
-
-private:
-    double calcular_diagonal(int i);
 };
 
 
-/* Operadores */
+/* Operators */
 std::ostream & operator<<(std::ostream &os, matriz &m);
 matriz operator +(const matriz &m1,const matriz &m2);
 matriz operator *(const matriz &m1,const matriz &m2);
