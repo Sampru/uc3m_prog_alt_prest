@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/main.cpp" "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles/matriz.dir/main.cpp.o"
-  "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/matriz.cpp" "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles/matriz.dir/matriz.cpp.o"
+  "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/main.cpp" "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles/matriz.dir/src/main.cpp.o"
+  "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/matriz.cpp" "/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles/matriz.dir/src/matriz.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

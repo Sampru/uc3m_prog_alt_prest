@@ -20,13 +20,7 @@ public:
     double& operator ()(int fil_, int col_) const;
     double& operator ()(int idx) const;
 
-    /* Getters */
-    int filas () const;
-    int columnas () const;
-    double* matrix () const;
-
-private:
-    /* Miembros */
+    /* Datamembers */
     double *mat;
     int  fil {0};
     int  col {0};

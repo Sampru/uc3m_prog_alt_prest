@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/matriz.dir/main.cpp.o"
-  "CMakeFiles/matriz.dir/matriz.cpp.o"
+  "CMakeFiles/matriz.dir/src/main.cpp.o"
+  "CMakeFiles/matriz.dir/src/matriz.cpp.o"
   "matriz.pdb"
   "matriz"
 )

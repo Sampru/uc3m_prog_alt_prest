@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/matriz.dir/main.cpp.o CMakeFiles/matriz.dir/matriz.cpp.o  -o matriz 
+/usr/bin/c++  -g   CMakeFiles/matriz.dir/src/main.cpp.o CMakeFiles/matriz.dir/src/matriz.cpp.o  -o matriz 

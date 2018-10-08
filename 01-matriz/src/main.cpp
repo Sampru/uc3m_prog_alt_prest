@@ -60,7 +60,7 @@ void rellenarMatriz(matriz &m) {
     mt19937 gen(rd());
     //uniform_real_distribution<> rand (2.5, 5.0);
     normal_distribution<> rand (2.5, 5.0);
-    for (int i = 0; i < m.filas() * m.columnas(); i++) {
+    for (int i = 0; i < m.fil * m.col; i++) {
             m(i) = rand(gen);
     }
 }

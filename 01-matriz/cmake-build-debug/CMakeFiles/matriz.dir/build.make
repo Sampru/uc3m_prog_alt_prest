@@ -57,42 +57,42 @@ include CMakeFiles/matriz.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/matriz.dir/flags.make
 
-CMakeFiles/matriz.dir/main.cpp.o: CMakeFiles/matriz.dir/flags.make
-CMakeFiles/matriz.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/matriz.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/matriz.dir/main.cpp.o -c /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/main.cpp
+CMakeFiles/matriz.dir/src/main.cpp.o: CMakeFiles/matriz.dir/flags.make
+CMakeFiles/matriz.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/matriz.dir/src/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/matriz.dir/src/main.cpp.o -c /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/main.cpp
 
-CMakeFiles/matriz.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/matriz.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/main.cpp > CMakeFiles/matriz.dir/main.cpp.i
+CMakeFiles/matriz.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/matriz.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/main.cpp > CMakeFiles/matriz.dir/src/main.cpp.i
 
-CMakeFiles/matriz.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matriz.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/main.cpp -o CMakeFiles/matriz.dir/main.cpp.s
+CMakeFiles/matriz.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matriz.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/main.cpp -o CMakeFiles/matriz.dir/src/main.cpp.s
 
-CMakeFiles/matriz.dir/matriz.cpp.o: CMakeFiles/matriz.dir/flags.make
-CMakeFiles/matriz.dir/matriz.cpp.o: ../matriz.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/matriz.dir/matriz.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/matriz.dir/matriz.cpp.o -c /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/matriz.cpp
+CMakeFiles/matriz.dir/src/matriz.cpp.o: CMakeFiles/matriz.dir/flags.make
+CMakeFiles/matriz.dir/src/matriz.cpp.o: ../src/matriz.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/matriz.dir/src/matriz.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/matriz.dir/src/matriz.cpp.o -c /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/matriz.cpp
 
-CMakeFiles/matriz.dir/matriz.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/matriz.dir/matriz.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/matriz.cpp > CMakeFiles/matriz.dir/matriz.cpp.i
+CMakeFiles/matriz.dir/src/matriz.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/matriz.dir/src/matriz.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/matriz.cpp > CMakeFiles/matriz.dir/src/matriz.cpp.i
 
-CMakeFiles/matriz.dir/matriz.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matriz.dir/matriz.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/matriz.cpp -o CMakeFiles/matriz.dir/matriz.cpp.s
+CMakeFiles/matriz.dir/src/matriz.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/matriz.dir/src/matriz.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/matriz.cpp -o CMakeFiles/matriz.dir/src/matriz.cpp.s
 
 # Object files for target matriz
 matriz_OBJECTS = \
-"CMakeFiles/matriz.dir/main.cpp.o" \
-"CMakeFiles/matriz.dir/matriz.cpp.o"
+"CMakeFiles/matriz.dir/src/main.cpp.o" \
+"CMakeFiles/matriz.dir/src/matriz.cpp.o"
 
 # External object files for target matriz
 matriz_EXTERNAL_OBJECTS =
 
-matriz: CMakeFiles/matriz.dir/main.cpp.o
-matriz: CMakeFiles/matriz.dir/matriz.cpp.o
+matriz: CMakeFiles/matriz.dir/src/main.cpp.o
+matriz: CMakeFiles/matriz.dir/src/matriz.cpp.o
 matriz: CMakeFiles/matriz.dir/build.make
 matriz: CMakeFiles/matriz.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable matriz"

@@ -87,10 +87,10 @@
 		<Unit filename="/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/lib/matriz.h">
 			<Option target="matriz"/>
 		</Unit>
-		<Unit filename="/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/main.cpp">
+		<Unit filename="/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/main.cpp">
 			<Option target="matriz"/>
 		</Unit>
-		<Unit filename="/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/matriz.cpp">
+		<Unit filename="/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/src/matriz.cpp">
 			<Option target="matriz"/>
 		</Unit>
 		<Unit filename="/media/sampru/Datuak/eskola/prog-altas-prest/uc3m_prog_alt_prest/01-matriz/CMakeLists.txt">

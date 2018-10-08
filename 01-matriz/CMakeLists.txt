@@ -3,4 +3,4 @@ project(matriz)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(matriz main.cpp lib/matriz.h matriz.cpp)
+add_executable(matriz src/main.cpp lib/matriz.h src/matriz.cpp)
