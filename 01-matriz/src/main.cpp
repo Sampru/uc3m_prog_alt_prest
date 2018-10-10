@@ -1,35 +1,41 @@
 #include <iostream>
-#include <random>
 #include <chrono>
+#include <cstring>
+
 #include "../lib/matriz.h"
 
-void fill_matriz(matriz &m);
-
-const int DIMENSION = 1000;
-const int LEAF_SIZE= 750;
+/* Globals */
+int DIMENSION;
+bool MODE;
+bool PRINT;
 
 
 int main(int argc, char *argv[]) {
     using namespace std;
     auto start = chrono::high_resolution_clock::now();
-    int size = DIMENSION;
-    char trace = 'n';
 
+    DIMENSION = 1000;
+    MODE = false;
+    PRINT = false;
+    /* Parse arguments */
     if (argc > 1) {
-        size = stoi(argv[1]);
+        DIMENSION = stoi(argv[1]);
     }
     if (argc > 2) {
-        trace = argv[2][0];
+        MODE = (strcmp(argv[2], "-b") == 0);
+    }
+    if (argc > 3) {
+        PRINT = (strcmp(argv[3], "-d") == 0);
     }
 
-    matriz A{size, size},
-           B{size, size},
-           C{size, size},
+    matriz A{DIMENSION, DIMENSION},
+           B{DIMENSION, DIMENSION},
+           C{DIMENSION, DIMENSION},
            D{};
 
-    fill_matriz(A);
-    fill_matriz(B);
-    fill_matriz(C);
+    A.fill_random();
+    B.fill_random();
+    C.fill_random();
 
     auto calc_start = chrono::high_resolution_clock::now();
     D = A * B + C;
@@ -37,8 +43,7 @@ int main(int argc, char *argv[]) {
 
     chrono::duration<double> calc_diff = calc_end - calc_start;
 
-
-    if (trace == 'y') {
+    if (PRINT) {
         cout << A << endl;
         cout << "*" << endl;
         cout << B << endl;
@@ -50,23 +55,10 @@ int main(int argc, char *argv[]) {
 
     cout << "Calculation time: " << calc_diff.count() << "s" << endl;
 
-    double diag = D.calculate_diagonal();
-
-    cout << "Diagonal: " << diag << endl;
+    cout << "Diagonal: " << D.diagonal() << endl;
 
     chrono::duration<double> diff = chrono::high_resolution_clock::now() - start;
     cout << "Total time: " << diff.count() << "s" << endl;
 
     return 0;
-}
-
-void fill_matriz(matriz &m) {
-    using namespace std;
-    random_device rd;
-    mt19937 gen(rd());
-    //uniform_real_distribution<> rand (2.5, 5.0);
-    normal_distribution<> rand (2.5, 5.0);
-    for (int i = 0; i < m.fil * m.col; i++) {
-            m(i) = rand(gen);
-    }
 }

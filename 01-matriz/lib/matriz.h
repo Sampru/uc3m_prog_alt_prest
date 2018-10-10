@@ -2,9 +2,13 @@
 // Created by sampru on 24/09/18.
 //
 
+/* Globals */
+extern int DIMENSION;
+extern bool MODE;
+extern bool PRINT;
+
 #ifndef MATRIZ_MATRIZ_H
 #define MATRIZ_MATRIZ_H
-
 #include <iostream>
 
 class matriz {
@@ -18,10 +22,10 @@ public:
 
     /* Operators */
     double& operator ()(int fil_, int col_) const;
-    double& operator ()(int idx) const;
 
     /* Requisites */
-    double calculate_diagonal();
+    double diagonal();
+    void fill_random();
 
     /* Datamembers */
     double *mat;
@@ -32,8 +36,8 @@ public:
 
 /* Operators */
 std::ostream & operator<<(std::ostream &os, matriz &m);
-matriz operator +(const matriz &m1,const matriz &m2);
-matriz operator *(const matriz &m1,const matriz &m2);
+matriz operator +(const matriz &m1, const matriz &m2);
+matriz operator *(const matriz &m1, const matriz &m2);
 
 
 #endif //MATRIZ_MATRIZ_H
