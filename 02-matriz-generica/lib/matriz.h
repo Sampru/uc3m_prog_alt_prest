@@ -9,36 +9,125 @@ extern bool PRINT;
 
 #ifndef MATRIZ_MATRIZ_H
 #define MATRIZ_MATRIZ_H
-#include <iostream>
 
-//template <typename T>
+#include <iostream>
+#include <random>
+
+template<typename T>
 class matriz {
 public:
     /* Constructors */
-    matriz ();
-    matriz (int fil_, int col_);
-    matriz (matriz&& m) noexcept;
-    matriz& operator =(const matriz&);
-    ~matriz();
+    matriz() : fil{0}, col{0}, mat{nullptr} {}
+
+    matriz(int fil_, int col_) : fil{fil_}, col{col_}, mat{new T[fil_ * col_]{}} {
+        if (fil_ != col_)
+            std::cerr << "*** Wrong dimensions for a square matrix :S ***" << std::endl
+                      << "***        Expect unexpected output         ***" << std::endl;
+    }
+
+    matriz(matriz &&m) noexcept : col{m.col}, fil{m.fil} {
+        this->mat = m.mat;
+    }
+
+    matriz &operator=(const matriz &m) {
+        this->fil = m.fil;
+        this->col = m.col;
+        this->mat = new T[this->fil * this->col];
+        std::copy(m.mat, m.mat + (m.fil * m.col), this->mat);
+        return *this;
+    }
+
+    ~matriz() {
+        delete[]this->mat;
+    }
 
     /* Operators */
-    double& operator ()(int fil_, int col_) const;
+    T &operator()(const int fil_, const int col_) const {
+        return mat[fil_ * col + col_];
+    }
 
     /* Requisites */
-    double diagonal();
-    void fill_random();
+    T diagonal() {
+        T ret = 0.0;
+        for (int i = 0; i < this->fil; i++)
+            ret += this->operator()(i, i);
+        return ret;
+    }
+
+    void fill_random() {
+        using namespace std;
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<T> rand(2.5, 5.0);
+        for (int i = 0; i < this->fil * this->col; i++) {
+            this->mat[i] = rand(gen);
+        }
+    }
 
     /* Datamembers */
-    double *mat;
-    int  fil {0};
-    int  col {0};
+    T *mat;
+    int fil{0};
+    int col{0};
 };
 
 
 /* Operators */
-std::ostream & operator<<(std::ostream &os, matriz &m);
-matriz operator +(const matriz &m1, const matriz &m2);
-matriz operator *(const matriz &m1, const matriz &m2);
+template<typename T>
+std::ostream &operator<<(std::ostream &os, matriz<T> &m) {
+    for (int i = 0; i < m.fil; i++) {
+        for (int j = 0; j < m.col; j++) {
+            os << m(i, j) << "\t";
+        }
+        os << std::endl;
+    }
+    return os;
+}
+
+template<typename T>
+matriz<T> operator+(const matriz<T> &m1, const matriz<T> &m2) {
+    int max = m1.fil * m1.col;
+    matriz<T> m3{m1.fil, m1.col};
+    for (int i = 0; i < max; ++i) {
+        m3.mat[i] = m1.mat[i] + m2.mat[i];
+    }
+    return m3;
+}
+
+template<typename T>
+matriz<T> operator*(const matriz<T> &m1, const matriz<T> &m2) {
+    matriz<T> m3{m1.fil, m2.col};
+    int size = m3.col;
+    if (MODE) {
+        int bsize = size < 4 ? 1 : size < 1000 ? (size / 2) - 1 : 100;
+
+
+        for (int bj = 0; bj < size; bj += bsize) {
+            for (int bk = 0; bk < size; bk += bsize) {
+                for (int i = 0; i < size; i++) {
+                    for (int j = bj; j < std::min(bj + bsize, size); j++) {
+                        T sum = 0.0;
+                        for (int k = bk; k < std::min(bk + bsize, size); k++) {
+                            sum += m1(i, k) * m2(k, j);
+                        }
+                        m3(i, j) += sum;
+                    }
+                }
+            }
+        }
+    } else {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                T sum = 0.0;
+                for (int k = 0; k < size; k++) {
+                    sum += m1(i, k) * m2(k, j);
+                }
+                m3(i, j) += sum;
+            }
+        }
+    }
+
+    return m3;
+}
 
 
 #endif //MATRIZ_MATRIZ_H

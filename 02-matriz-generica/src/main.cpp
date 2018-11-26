@@ -28,10 +28,10 @@ int main(int argc, char *argv[]) {
         PRINT = (strcmp(argv[3], "-d") == 0);
     }
 
-    matriz A{DIMENSION, DIMENSION},
-           B{DIMENSION, DIMENSION},
-           C{DIMENSION, DIMENSION},
-           D{};
+    matriz<float> A{DIMENSION, DIMENSION},
+            B{DIMENSION, DIMENSION},
+            C{DIMENSION, DIMENSION},
+            D{};
 
     A.fill_random();
     B.fill_random();
