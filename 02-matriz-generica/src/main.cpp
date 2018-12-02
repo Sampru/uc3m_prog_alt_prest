@@ -1,8 +1,10 @@
 #include <iostream>
 #include <chrono>
 #include <cstring>
+#include <complex.h>
 
-#include "../lib/matriz.h"
+#include "../lib/Matriz.h"
+#include "../lib/Racional.h"
 
 /* Globals */
 int DIMENSION;
@@ -14,7 +16,7 @@ int main(int argc, char *argv[]) {
     using namespace std;
     auto start = chrono::high_resolution_clock::now();
 
-    DIMENSION = 1000;
+    DIMENSION = 100;
     MODE = false;
     PRINT = false;
     /* Parse arguments */
@@ -28,14 +30,14 @@ int main(int argc, char *argv[]) {
         PRINT = (strcmp(argv[3], "-d") == 0);
     }
 
-    matriz<float> A{DIMENSION, DIMENSION},
-            B{DIMENSION, DIMENSION},
-            C{DIMENSION, DIMENSION},
-            D{};
+    Matriz<Racional<double>> A{DIMENSION, DIMENSION};
+    Matriz<Racional<double>> B{DIMENSION, DIMENSION};
+    Matriz<Racional<double>> C{DIMENSION, DIMENSION};
+    Matriz<Racional<double>> D{};
 
-    A.fill_random();
-    B.fill_random();
-    C.fill_random();
+    A.fill_random(2.5, 5.0);
+    B.fill_random(2.5, 5.0);
+    C.fill_random(2.5, 5.0);
 
     auto calc_start = chrono::high_resolution_clock::now();
     D = A * B + C;

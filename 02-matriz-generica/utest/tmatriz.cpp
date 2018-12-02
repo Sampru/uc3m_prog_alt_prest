@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../lib/matriz.h"
+#include "../lib/Matriz.h"
 
 TEST(tmariz, construct) {
     matriz m{3, 3};

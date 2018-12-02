@@ -12,24 +12,32 @@ extern bool PRINT;
 
 #include <iostream>
 #include <random>
+#include <type_traits>
 
+#include "../lib/Racional.h"
+
+
+//template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
 template<typename T>
-class matriz {
+class Matriz {
 public:
-    /* Constructors */
-    matriz() : fil{0}, col{0}, mat{nullptr} {}
+    /* Empty constructor */
+    Matriz() = default;
 
-    matriz(int fil_, int col_) : fil{fil_}, col{col_}, mat{new T[fil_ * col_]{}} {
+    /* Size constructor */
+    Matriz(int fil_, int col_) : fil{fil_}, col{col_}, mat{new T[fil_ * col_]{}} {
         if (fil_ != col_)
             std::cerr << "*** Wrong dimensions for a square matrix :S ***" << std::endl
                       << "***        Expect unexpected output         ***" << std::endl;
     }
 
-    matriz(matriz &&m) noexcept : col{m.col}, fil{m.fil} {
+    /* Move operator */
+    Matriz(Matriz &&m) noexcept : col{m.col}, fil{m.fil} {
         this->mat = m.mat;
     }
 
-    matriz &operator=(const matriz &m) {
+    /* Copy operator */
+    Matriz &operator=(const Matriz &m) {
         this->fil = m.fil;
         this->col = m.col;
         this->mat = new T[this->fil * this->col];
@@ -37,43 +45,45 @@ public:
         return *this;
     }
 
-    ~matriz() {
+    /* Destructor */
+    ~Matriz() {
         delete[]this->mat;
     }
 
-    /* Operators */
+    /* 2 params parenthesis operator */
     T &operator()(const int fil_, const int col_) const {
         return mat[fil_ * col + col_];
     }
 
-    /* Requisites */
+    /* Calculate the diagonal value */
     T diagonal() {
-        T ret = 0.0;
+        T ret{};
         for (int i = 0; i < this->fil; i++)
             ret += this->operator()(i, i);
         return ret;
     }
 
-    void fill_random() {
+    /* Fill with random values */
+    void fill_random(double mean, double sig) {
         using namespace std;
         random_device rd;
         mt19937 gen(rd());
-        uniform_int_distribution<T> rand(2.5, 5.0);
+        normal_distribution<double> rand(mean, sig);
         for (int i = 0; i < this->fil * this->col; i++) {
             this->mat[i] = rand(gen);
         }
     }
 
     /* Datamembers */
-    T *mat;
+    T *mat{nullptr};
     int fil{0};
     int col{0};
 };
 
 
-/* Operators */
+/* << Matriz operator */
 template<typename T>
-std::ostream &operator<<(std::ostream &os, matriz<T> &m) {
+std::ostream &operator<<(std::ostream &os, Matriz<T> &m) {
     for (int i = 0; i < m.fil; i++) {
         for (int j = 0; j < m.col; j++) {
             os << m(i, j) << "\t";
@@ -83,19 +93,21 @@ std::ostream &operator<<(std::ostream &os, matriz<T> &m) {
     return os;
 }
 
+/* matriz1 + matriz2 operator */
 template<typename T>
-matriz<T> operator+(const matriz<T> &m1, const matriz<T> &m2) {
+Matriz<T> operator+(const Matriz<T> &m1, const Matriz<T> &m2) {
     int max = m1.fil * m1.col;
-    matriz<T> m3{m1.fil, m1.col};
+    Matriz<T> m3{m1.fil, m1.col};
     for (int i = 0; i < max; ++i) {
         m3.mat[i] = m1.mat[i] + m2.mat[i];
     }
     return m3;
 }
 
+/* matriz1 * matriz2 operator */
 template<typename T>
-matriz<T> operator*(const matriz<T> &m1, const matriz<T> &m2) {
-    matriz<T> m3{m1.fil, m2.col};
+Matriz<T> operator*(const Matriz<T> &m1, const Matriz<T> &m2) {
+    Matriz<T> m3{m1.fil, m2.col};
     int size = m3.col;
     if (MODE) {
         int bsize = size < 4 ? 1 : size < 1000 ? (size / 2) - 1 : 100;
@@ -117,7 +129,7 @@ matriz<T> operator*(const matriz<T> &m1, const matriz<T> &m2) {
     } else {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                T sum = 0.0;
+                T sum{};
                 for (int k = 0; k < size; k++) {
                     sum += m1(i, k) * m2(k, j);
                 }
