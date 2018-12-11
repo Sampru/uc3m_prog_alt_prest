@@ -14,11 +14,9 @@ extern bool PRINT;
 #include <random>
 #include <type_traits>
 
-#include "../lib/Racional.h"
 
-
-//template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-template<typename T>
+template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+//template<typename T>
 class Matriz {
 public:
     /* Empty constructor */
@@ -56,8 +54,8 @@ public:
     }
 
     /* Calculate the diagonal value */
-    T diagonal() {
-        T ret{};
+    T &diagonal() {
+        T &ret = *new T;
         for (int i = 0; i < this->fil; i++)
             ret += this->operator()(i, i);
         return ret;
@@ -82,7 +80,8 @@ public:
 
 
 /* << Matriz operator */
-template<typename T>
+template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+//template<typename T>
 std::ostream &operator<<(std::ostream &os, Matriz<T> &m) {
     for (int i = 0; i < m.fil; i++) {
         for (int j = 0; j < m.col; j++) {
@@ -94,7 +93,8 @@ std::ostream &operator<<(std::ostream &os, Matriz<T> &m) {
 }
 
 /* matriz1 + matriz2 operator */
-template<typename T>
+template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+//template<typename T>
 Matriz<T> operator+(const Matriz<T> &m1, const Matriz<T> &m2) {
     int max = m1.fil * m1.col;
     Matriz<T> m3{m1.fil, m1.col};
@@ -105,7 +105,8 @@ Matriz<T> operator+(const Matriz<T> &m1, const Matriz<T> &m2) {
 }
 
 /* matriz1 * matriz2 operator */
-template<typename T>
+template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+//template<typename T>
 Matriz<T> operator*(const Matriz<T> &m1, const Matriz<T> &m2) {
     Matriz<T> m3{m1.fil, m2.col};
     int size = m3.col;
@@ -117,7 +118,7 @@ Matriz<T> operator*(const Matriz<T> &m1, const Matriz<T> &m2) {
             for (int bk = 0; bk < size; bk += bsize) {
                 for (int i = 0; i < size; i++) {
                     for (int j = bj; j < std::min(bj + bsize, size); j++) {
-                        T sum = 0.0;
+                        T &sum = *new T;
                         for (int k = bk; k < std::min(bk + bsize, size); k++) {
                             sum += m1(i, k) * m2(k, j);
                         }
@@ -129,7 +130,7 @@ Matriz<T> operator*(const Matriz<T> &m1, const Matriz<T> &m2) {
     } else {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                T sum{};
+                T &sum = *new T;
                 for (int k = 0; k < size; k++) {
                     sum += m1(i, k) * m2(k, j);
                 }
