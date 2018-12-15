@@ -3,8 +3,8 @@
 #include <cstring>
 #include <complex.h>
 
-#include "../lib/Matriz.h"
 #include "../lib/Racional.h"
+#include "../lib/Matriz.h"
 
 /* Globals */
 int DIMENSION;
@@ -30,10 +30,10 @@ int main(int argc, char *argv[]) {
         PRINT = (strcmp(argv[3], "-d") == 0);
     }
 
-    Matriz<Racional<float>> A{DIMENSION, DIMENSION};
-    Matriz<Racional<float>> B{DIMENSION, DIMENSION};
-    Matriz<Racional<float>> C{DIMENSION, DIMENSION};
-    Matriz<Racional<float>> D{};
+    Matriz<Racional<long >> A{DIMENSION, DIMENSION};
+    Matriz<Racional<long>> B{DIMENSION, DIMENSION};
+    Matriz<Racional<long>> C{DIMENSION, DIMENSION};
+    Matriz<Racional<long>> D{};
 
     A.fill_random(2.5, 5.0);
     B.fill_random(2.5, 5.0);
@@ -64,16 +64,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-//int main(int argc, char *argv[]) {
-//    using namespace std;
-//    Racional<int> texto_de_ejemplo{8, 4};
-//    Racional<int> texto_de_ejemplo2{3, 9};
-//    Racional<int> texto_de_ejemplo3{};
-//    texto_de_ejemplo3 = texto_de_ejemplo + texto_de_ejemplo2;
-//    cout << texto_de_ejemplo << endl;
-//    cout << "+" << endl << endl;
-//    cout << texto_de_ejemplo2 << endl;
-//    cout << "=" << endl << endl;
-//    cout << texto_de_ejemplo3 << endl;
-//}
