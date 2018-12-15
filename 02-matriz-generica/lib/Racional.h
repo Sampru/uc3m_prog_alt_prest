@@ -12,7 +12,6 @@
 
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 class Racional {
 private:
 
@@ -65,7 +64,6 @@ public:
 };
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator+(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -75,7 +73,6 @@ Racional<T> operator+(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator+=(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -85,7 +82,6 @@ Racional<T> operator+=(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator*(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -95,7 +91,6 @@ Racional<T> operator*(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator*=(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -105,7 +100,6 @@ Racional<T> operator*=(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 std::ostream &operator<<(std::ostream &os, Racional<T> &r) {
 
     os << r.numerador << "/" << r.denominador;
