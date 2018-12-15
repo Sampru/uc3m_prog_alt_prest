@@ -23,6 +23,12 @@ extern bool PRINT;
 template<typename T>
 class Matriz {
 public:
+
+    /* Datamembers */
+    int fil{0};
+    int col{0};
+    T *mat{nullptr};
+
     /* Empty constructor */
     Matriz() = default;
 
@@ -34,7 +40,7 @@ public:
     }
 
     /* Move operator */
-    Matriz(Matriz &&m) noexcept : col{m.col}, fil{m.fil} {
+    Matriz(Matriz &&m) noexcept : fil{m.fil}, col{m.col} {
         this->mat = m.mat;
     }
 
@@ -75,11 +81,6 @@ public:
             this->mat[i] = rand(gen);
         }
     }
-
-    /* Datamembers */
-    T *mat{nullptr};
-    int fil{0};
-    int col{0};
 };
 
 
@@ -150,6 +151,12 @@ Matriz<T> operator*(const Matriz<T> &m1, const Matriz<T> &m2) {
 template<typename N>
 class Matriz<Racional<N>> {
 public:
+
+    /* Datamembers */
+    int fil{0};
+    int col{0};
+    Racional<N> *mat{nullptr};
+
     /* Empty constructor */
     Matriz() = default;
 
@@ -161,7 +168,7 @@ public:
     }
 
     /* Move operator */
-    Matriz(Matriz &&m) noexcept : col{m.col}, fil{m.fil} {
+    Matriz(Matriz &&m) noexcept : fil{m.fil}, col{m.col} {
         this->mat = m.mat;
     }
 
@@ -195,7 +202,6 @@ public:
     /* Fill with random values */
     void fill_random(double mean, double sig) {
         using namespace std;
-        Racional<N> r;
         random_device rd;
         mt19937 gen(rd());
         normal_distribution<double> rand(mean, sig);
@@ -205,11 +211,6 @@ public:
             this->mat[i] = Racional<N>{num, den};
         }
     }
-
-    /* Datamembers */
-    Racional<N> *mat{nullptr};
-    int fil{0};
-    int col{0};
 };
 
 

@@ -17,8 +17,8 @@ int main(int argc, char *argv[]) {
     auto start = chrono::high_resolution_clock::now();
 
     DIMENSION = 5;
-    MODE = false;
-    PRINT = true;
+    MODE = true;
+    PRINT = false;
     /* Parse arguments */
     if (argc > 1) {
         DIMENSION = stoi(argv[1]);
