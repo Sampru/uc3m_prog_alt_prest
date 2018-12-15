@@ -6,34 +6,24 @@
 #include "../lib/Racional.h"
 #include "../lib/Matriz.h"
 
-/* Globals */
-int DIMENSION;
-bool MODE;
-bool PRINT;
-
-
 int main(int argc, char *argv[]) {
     using namespace std;
     auto start = chrono::high_resolution_clock::now();
 
-    DIMENSION = 5;
-    MODE = true;
-    PRINT = false;
+    int DIMENSION = 10;
+    bool PRINT = false;
     /* Parse arguments */
     if (argc > 1) {
         DIMENSION = stoi(argv[1]);
     }
     if (argc > 2) {
-        MODE = (strcmp(argv[2], "-b") == 0);
-    }
-    if (argc > 3) {
-        PRINT = (strcmp(argv[3], "-d") == 0);
+        PRINT = (strcmp(argv[2], "-p") == 0);
     }
 
-    Matriz<Racional<long >> A{DIMENSION, DIMENSION};
-    Matriz<Racional<long>> B{DIMENSION, DIMENSION};
-    Matriz<Racional<long>> C{DIMENSION, DIMENSION};
-    Matriz<Racional<long>> D{};
+    Matriz<Racional<int>> A{DIMENSION, DIMENSION};
+    Matriz<Racional<int>> B{DIMENSION, DIMENSION};
+    Matriz<Racional<int>> C{DIMENSION, DIMENSION};
+    Matriz<Racional<int>> D{};
 
     A.fill_random(2.5, 5.0);
     B.fill_random(2.5, 5.0);
@@ -57,7 +47,8 @@ int main(int argc, char *argv[]) {
 
     cout << "Calculation time: " << calc_diff.count() << "s" << endl;
 
-    cout << "Diagonal: " << D.diagonal() << endl;
+    auto diagonal = D.diagonal();
+    cout << "Diagonal: " << diagonal << endl;
 
     chrono::duration<double> diff = chrono::high_resolution_clock::now() - start;
     cout << "Total time: " << diff.count() << "s" << endl;

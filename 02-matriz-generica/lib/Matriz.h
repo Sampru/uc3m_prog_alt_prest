@@ -2,11 +2,6 @@
 // Created by sampru on 24/09/18.
 //
 
-/* Globals */
-extern int DIMENSION;
-extern bool MODE;
-extern bool PRINT;
-
 #ifndef MATRIZ_MATRIZ_H
 #define MATRIZ_MATRIZ_H
 
@@ -19,7 +14,6 @@ extern bool PRINT;
 /***********************/
 /** Template generico **/
 /***********************/
-
 template<typename T>
 class Matriz {
 public:
@@ -64,8 +58,8 @@ public:
     }
 
     /* Calculate the diagonal value */
-    T &diagonal() {
-        T &ret = *new T;
+    T diagonal() {
+        T ret{0};
         for (int i = 0; i < this->fil; i++)
             ret += this->operator()(i, i);
         return ret;
@@ -112,31 +106,19 @@ template<typename T, typename = typename std::enable_if<std::is_signed<T>::value
 Matriz<T> operator*(const Matriz<T> &m1, const Matriz<T> &m2) {
     Matriz<T> m3{m1.fil, m2.col};
     int size = m3.col;
-    if (MODE) {
-        int bsize = size < 4 ? 1 : size < 1000 ? (size / 2) - 1 : 100;
+    int bsize = size < 4 ? 1 : size < 1000 ? (size / 2) - 1 : 100;
+    T sum;
 
-
-        for (int bj = 0; bj < size; bj += bsize) {
-            for (int bk = 0; bk < size; bk += bsize) {
-                for (int i = 0; i < size; i++) {
-                    for (int j = bj; j < std::min(bj + bsize, size); j++) {
-                        T &sum = *new T;
-                        for (int k = bk; k < std::min(bk + bsize, size); k++) {
-                            sum += m1(i, k) * m2(k, j);
-                        }
-                        m3(i, j) += sum;
+    for (int bj = 0; bj < size; bj += bsize) {
+        for (int bk = 0; bk < size; bk += bsize) {
+            for (int i = 0; i < size; i++) {
+                for (int j = bj; j < std::min(bj + bsize, size); j++) {
+                    sum = 0;
+                    for (int k = bk; k < std::min(bk + bsize, size); k++) {
+                        sum += m1(i, k) * m2(k, j);
                     }
+                    m3(i, j) += sum;
                 }
-            }
-        }
-    } else {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                T &sum = *new T;
-                for (int k = 0; k < size; k++) {
-                    sum += m1(i, k) * m2(k, j);
-                }
-                m3(i, j) += sum;
             }
         }
     }
@@ -192,8 +174,8 @@ public:
     }
 
     /* Calculate the diagonal value */
-    Racional<N> &diagonal() {
-        Racional<N> &ret = *new Racional<N>;
+    Racional<N> diagonal() {
+        Racional<N> ret{0, 1};
         for (int i = 0; i < this->fil; i++)
             ret = ret + this->operator()(i, i);
         return ret;
@@ -242,31 +224,19 @@ template<typename N>
 Matriz<Racional<N>> operator*(const Matriz<Racional<N>> &m1, const Matriz<Racional<N>> &m2) {
     Matriz<Racional<N>> m3{m1.fil, m2.col};
     int size = m3.col;
-    if (MODE) {
-        int bsize = size < 4 ? 1 : size < 1000 ? (size / 2) - 1 : 100;
+    int bsize = size < 4 ? 1 : size < 1000 ? (size / 2) - 1 : 100;
+    Racional<N> sum;
 
-
-        for (int bj = 0; bj < size; bj += bsize) {
-            for (int bk = 0; bk < size; bk += bsize) {
-                for (int i = 0; i < size; i++) {
-                    for (int j = bj; j < std::min(bj + bsize, size); j++) {
-                        Racional<N> &sum = *new Racional<N>;
-                        for (int k = bk; k < std::min(bk + bsize, size); k++) {
-                            sum += m1(i, k) * m2(k, j);
-                        }
-                        m3(i, j) += sum;
+    for (int bj = 0; bj < size; bj += bsize) {
+        for (int bk = 0; bk < size; bk += bsize) {
+            for (int i = 0; i < size; i++) {
+                for (int j = bj; j < std::min(bj + bsize, size); j++) {
+                    sum(0, 1);
+                    for (int k = bk; k < std::min(bk + bsize, size); k++) {
+                        sum += m1(i, k) * m2(k, j);
                     }
+                    m3(i, j) += sum;
                 }
-            }
-        }
-    } else {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                Racional<N> &sum = *new Racional<N>;
-                for (int k = 0; k < size; k++) {
-                    sum += m1(i, k) * m2(k, j);
-                }
-                m3(i, j) += sum;
             }
         }
     }

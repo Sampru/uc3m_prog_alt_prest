@@ -77,7 +77,7 @@ public:
     T denominador{1};
 };
 
-template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+template<typename T, typename = typename std::enable_if<std::is_integral<T>::value && std::is_signed<T>::value, T>::type>
 Racional<T> operator+(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -86,7 +86,7 @@ Racional<T> operator+(const Racional<T> &r1, const Racional<T> &r2) {
     return r3;
 }
 
-template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+template<typename T, typename = typename std::enable_if<std::is_integral<T>::value && std::is_signed<T>::value, T>::type>
 Racional<T> operator+=(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -95,7 +95,7 @@ Racional<T> operator+=(const Racional<T> &r1, const Racional<T> &r2) {
     return r3;
 }
 
-template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+template<typename T, typename = typename std::enable_if<std::is_integral<T>::value && std::is_signed<T>::value, T>::type>
 Racional<T> operator*(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -104,7 +104,7 @@ Racional<T> operator*(const Racional<T> &r1, const Racional<T> &r2) {
     return r3;
 }
 
-template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+template<typename T, typename = typename std::enable_if<std::is_integral<T>::value && std::is_signed<T>::value, T>::type>
 Racional<T> operator*=(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -113,7 +113,7 @@ Racional<T> operator*=(const Racional<T> &r1, const Racional<T> &r2) {
     return r3;
 }
 
-template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
+template<typename T, typename = typename std::enable_if<std::is_integral<T>::value && std::is_signed<T>::value, T>::type>
 std::ostream &operator<<(std::ostream &os, Racional<T> &r) {
 
     os << r.numerador << "/" << r.denominador;
