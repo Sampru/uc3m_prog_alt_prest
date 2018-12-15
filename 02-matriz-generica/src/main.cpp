@@ -3,8 +3,8 @@
 #include <cstring>
 #include <complex.h>
 
-#include "../lib/Matriz.h"
 #include "../lib/Racional.h"
+#include "../lib/Matriz.h"
 
 /* Globals */
 int DIMENSION;
@@ -30,10 +30,10 @@ int main(int argc, char *argv[]) {
         PRINT = (strcmp(argv[3], "-d") == 0);
     }
 
-    Matriz<long int> A{DIMENSION, DIMENSION};
-    Matriz<long int> B{DIMENSION, DIMENSION};
-    Matriz<long int> C{DIMENSION, DIMENSION};
-    Matriz<long int> D{};
+    Matriz<Racional<long >> A{DIMENSION, DIMENSION};
+    Matriz<Racional<long>> B{DIMENSION, DIMENSION};
+    Matriz<Racional<long>> C{DIMENSION, DIMENSION};
+    Matriz<Racional<long>> D{};
 
     A.fill_random(2.5, 5.0);
     B.fill_random(2.5, 5.0);

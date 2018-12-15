@@ -11,13 +11,12 @@
 #include <type_traits>
 
 
-template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
+template<typename T, typename = typename std::enable_if<std::is_integral<T>::value && std::is_signed<T>::value, T>::type>
 class Racional {
 private:
 
     T euclidean(T a, T b) const {
-        if (b == 0.0) throw -1;
+        if (a == 0.0 || b == 0.0) return 0;
         else {
             T aux = a % b;
             while (aux != 0.0) {
@@ -34,8 +33,13 @@ public:
 
     Racional(T num, T den) {
         T gcd = euclidean(std::max(num, den), std::min(num, den));
-        numerador = (num / gcd);
-        denominador = (den / gcd);
+        if (gcd == 0) {
+            numerador = 0;
+            denominador = 1;
+        } else {
+            numerador = (num / gcd);
+            denominador = (den / gcd);
+        }
     }
 
     ~Racional() = default;
@@ -48,16 +52,25 @@ public:
 
     Racional(Racional &&r) noexcept {
         T gcd = euclidean(std::max(r.numerador, r.denominador), std::min(r.numerador, r.denominador));
-        T num = (r.numerador / gcd);
-        T den = (r.denominador / gcd);
+        T num = 0;
+        T den = 1;
+        if (gcd != 0) {
+            num = (r.numerador / gcd);
+            den = (r.denominador / gcd);
+        }
         this->numerador = num;
         this->denominador = den;
     }
 
     void operator()(const T num, const T den) {
         T gcd = euclidean(std::max(num, den), std::min(num, den));
-        numerador = (num / gcd);
-        denominador = (den / gcd);
+        if (gcd == 0) {
+            numerador = 0;
+            denominador = 1;
+        } else {
+            numerador = (num / gcd);
+            denominador = (den / gcd);
+        }
     }
 
     T numerador{0};
@@ -65,7 +78,6 @@ public:
 };
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator+(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -75,7 +87,6 @@ Racional<T> operator+(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator+=(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -85,7 +96,6 @@ Racional<T> operator+=(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator*(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -95,7 +105,6 @@ Racional<T> operator*(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 Racional<T> operator*=(const Racional<T> &r1, const Racional<T> &r2) {
     Racional<T> r3{};
 
@@ -105,7 +114,6 @@ Racional<T> operator*=(const Racional<T> &r1, const Racional<T> &r2) {
 }
 
 template<typename T, typename = typename std::enable_if<std::is_signed<T>::value, T>::type>
-//template<typename T>
 std::ostream &operator<<(std::ostream &os, Racional<T> &r) {
 
     os << r.numerador << "/" << r.denominador;
