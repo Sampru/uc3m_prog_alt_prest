@@ -7,10 +7,9 @@
 void fut::read(std::string nombre, std::map<int, Precio> &precios) {
     using namespace std;
     string linea;
-    ifstream fichero;
     int id{0};
 
-    fichero.open(nombre, ios::in);
+    ifstream fichero{nombre, ios::in};
 
     if (fichero.is_open()) {
         while (getline(fichero, linea)) {
@@ -20,17 +19,18 @@ void fut::read(std::string nombre, std::map<int, Precio> &precios) {
     fichero.close();
 }
 
-void fut::write(std::string nombre, std::map<std::string, std::map<int, Precio>> preciosSeparados) {
+void fut::write(std::string nombre, std::map<std::string, std::map<time_t, Precio>> preciosSeparados) {
     using namespace std;
     string linea, txt;
-    ofstream fichero;
 
-    for (pair<string, map<int, Precio>> lista : preciosSeparados) {
+    for (pair<string, map<time_t , Precio>> lista : preciosSeparados) {
         txt = nombre;
         txt.append(lista.first);
         txt.append(".txt");
 
-        fichero.open(txt, ios::out);
+        cout << "Generando " << txt << endl;
+
+        ofstream fichero{txt, ios::out};
 
         for (pair<int, Precio> precio : lista.second)
             fichero << precio.second;

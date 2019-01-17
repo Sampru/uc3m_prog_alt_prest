@@ -4,13 +4,15 @@
 
 int main() {
     using namespace std;
-    map<int, Precio> precios;
-    map<string, map<int, Precio>> preciosSeparados;
+    map<int, Precio> precios{};
+    map<string, map<time_t, vector<Precio>>> preciosSeparados{};
+    map<string, map<time_t, Precio>> preciosAgrupados{};
+    
+    fut::read("res/default_data.txt", precios);
 
-    fut::read("./resources/default_data.txt", precios);
+    emparejarPrecios(precios, preciosSeparados);
 
-    for (pair<int, Precio> precio : precios)
-        preciosSeparados[precio.second.instrumento][precio.first] = precio.second;
+    agruparPrecios(preciosSeparados, preciosAgrupados);
 
-    fut::write("./out/", preciosSeparados);
+    fut::write("out/", preciosAgrupados);
 }

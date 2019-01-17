@@ -6,33 +6,43 @@
 #define INC_03_CLASIF_MARKET_DATA_PRECIO_H
 
 
-#include <string>
-#include <vector>
+#include <algorithm>
+#include <time.h>
 #include <iterator>
+#include <iostream>
+#include <map>
 #include <sstream>
 #include <stdlib.h>
-#include <iostream>
-#include <algorithm>
+#include <string>
+#include <vector>
+
+#include "regresion_lineal.h"
 
 class Precio {
 public:
-    int anyo = 0;
-    int mes = 0;
-    int dia = 0;
-    int hora = 0;
-    int minuto = 0;
-    long nano = 0;
-    std::string instrumento = "";
-    std::string tiempo = "";
-    double precio = 0.0;
+    long micro{0l};
+    std::string instrumento{""};
+    time_t tt_tiempo{};
+    struct tm tm_tiempo{};
+    double precio{0.0};
 
     Precio() = default;
 
-    explicit Precio(std::string);
+    explicit Precio(std::string input);
+
+    Precio &operator=(const Precio &);
 
     ~Precio() = default;
 };
 
 std::ostream &operator<<(std::ostream &os, Precio &precio);
+
+void emparejarPrecios(std::map<int, Precio> precios,
+                      std::map<std::string, std::map<time_t, std::vector<Precio>>> &preciosSeparados);
+
+void agruparPrecios(std::map<std::string, std::map<time_t, std::vector<Precio>>> preciosSeparados,
+                    std::map<std::string, std::map<time_t, Precio>> &preciosAgrupados);
+
+Precio mediaRegresionLineal(std::vector<Precio> precios);
 
 #endif //INC_03_CLASIF_MARKET_DATA_PRECIO_H

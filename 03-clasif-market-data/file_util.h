@@ -13,7 +13,7 @@
 namespace fut {
     void read(std::string nombre, std::map<int, Precio> &precios);
 
-    void write(std::string nombre, std::map<std::string, std::map<int, Precio>> preciosSeparados);
+    void write(std::string nombre, std::map<std::string, std::map<time_t, Precio>> preciosSeparados);
 }
 
 #endif //INC_03_CLASIF_MARKET_DATA_FILE_UTIL_H
