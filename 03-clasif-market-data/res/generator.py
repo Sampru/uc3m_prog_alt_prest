@@ -3,7 +3,7 @@ import random
 import time
 import datetime
 
-loops = 10000
+loops = 100000
 
 actives = ["GOOGLE", "APPLE", "TROLLOFONICA", "SAN@ANDER", "PIP0CONTGO_", "MAPFRE", "TOLAILOLAI", "ALIBABA", "AMAZON", "ALGO", "OTRO ALGO"]
 

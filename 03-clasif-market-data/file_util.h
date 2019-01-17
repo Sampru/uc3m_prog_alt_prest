@@ -11,6 +11,7 @@
 #include "Precio.h"
 
 namespace fut {
+
     void read(std::string nombre, std::map<int, Precio> &precios);
 
     void write(std::string nombre, std::map<std::string, std::map<time_t, Precio>> preciosSeparados);
