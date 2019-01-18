@@ -37,8 +37,9 @@ int main(int argc, char *argv[]) {
 
     agruparPrecios(preciosSeparados, preciosAgrupados);
 
-    auto tiempoFinal = chrono::high_resolution_clock::now();
     fut::write(output, preciosAgrupados);
+
+    auto tiempoFinal = chrono::high_resolution_clock::now();
 
     chrono::duration<double> tiempo = tiempoFinal - tiempoInicio;
 
