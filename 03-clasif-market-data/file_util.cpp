@@ -4,16 +4,16 @@
 
 #include "file_util.h"
 
-void fut::read(std::string nombre, std::map<int, Precio> &precios) {
+void fut::read(const std::string &nombre, std::map<std::string, std::map<time_t, std::vector<Precio>>> &precios) {
     using namespace std;
     string linea;
-    int id{0};
 
     ifstream fichero{nombre, ios::in};
 
     if (fichero.is_open()) {
         while (getline(fichero, linea)) {
-            precios[id++] = Precio{linea};
+            Precio precio{linea};
+            precios[precio.instrumento][precio.tt_tiempo].push_back(precio);
         }
     }
     fichero.close();

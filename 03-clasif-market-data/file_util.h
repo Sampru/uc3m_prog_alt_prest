@@ -12,7 +12,7 @@
 
 namespace fut {
 
-    void read(std::string nombre, std::map<int, Precio> &precios);
+    void read(const std::string &nombre, std::map<std::string, std::map<time_t, std::vector<Precio>>> &precios);
 
     void write(std::string nombre, std::map<std::string, std::map<time_t, Precio>> preciosSeparados);
 }

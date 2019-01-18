@@ -15,7 +15,7 @@ Precio::Precio(std::string input) {
     string tiempoStr = datos.at(index);
     tiempoStr.append(" ");
     tiempoStr.append(datos.at(++index));
-    strptime(tiempoStr.c_str(), "%Y-%m-%d %H:%M:%S", &tm_tiempo);
+    strptime(tiempoStr.c_str(), "%d-%m-%Y %H:%M:%S", &tm_tiempo);
 
     int sec = tm_tiempo.tm_sec;
     tm_tiempo.tm_sec = 0;
@@ -51,14 +51,6 @@ std::ostream &operator<<(std::ostream &os, Precio &precio) {
     os << out << std::endl;
 
     return os;
-}
-
-void emparejarPrecios(std::map<int, Precio> precios,
-                      std::map<std::string, std::map<time_t, std::vector<Precio>>> &preciosSeparados) {
-    using namespace std;
-    for (pair<int, Precio> precio : precios) {
-        preciosSeparados[precio.second.instrumento][precio.second.tt_tiempo].push_back(precio.second);
-    }
 }
 
 void agruparPrecios(std::map<std::string, std::map<time_t, std::vector<Precio>>> preciosSeparados,

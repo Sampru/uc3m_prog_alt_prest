@@ -6,7 +6,6 @@
 int main(int argc, char *argv[]) {
     using namespace std;
     auto tiempoInicio = chrono::high_resolution_clock::now();
-    map<int, Precio> precios{};
     map<string, map<time_t, vector<Precio>>> preciosSeparados{};
     map<string, map<time_t, Precio>> preciosAgrupados{};
     string input{}, output{};
@@ -34,9 +33,7 @@ int main(int argc, char *argv[]) {
     cout << "Fichero de entrada: " << input << endl;
     cout << "Directorio de salida: " << output << endl;
 
-    fut::read(input, precios);
-
-    emparejarPrecios(precios, preciosSeparados);
+    fut::read(input, preciosSeparados);
 
     agruparPrecios(preciosSeparados, preciosAgrupados);
 

@@ -37,9 +37,6 @@ public:
 
 std::ostream &operator<<(std::ostream &os, Precio &precio);
 
-void emparejarPrecios(std::map<int, Precio> precios,
-                      std::map<std::string, std::map<time_t, std::vector<Precio>>> &preciosSeparados);
-
 void agruparPrecios(std::map<std::string, std::map<time_t, std::vector<Precio>>> preciosSeparados,
                     std::map<std::string, std::map<time_t, Precio>> &preciosAgrupados);
 
